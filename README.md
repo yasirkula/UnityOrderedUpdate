@@ -50,11 +50,11 @@ public static event UpdateCallback OnUpdate;
 public static event UpdateCallback OnFixedUpdate;
 public static event UpdateCallback OnLateUpdate;
 
-public static void OrderedUpdate.AddUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
-public static void OrderedUpdate.AddFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
-public static void OrderedUpdate.AddLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.AddUpdateReceiver( UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.AddFixedUpdateReceiver( UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.AddLateUpdateReceiver( UpdateCallback receiver, int order = 0 );
 
-public static void OrderedUpdate.RemoveUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
-public static void OrderedUpdate.RemoveFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
-public static void OrderedUpdate.RemoveLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.RemoveUpdateReceiver( UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.RemoveFixedUpdateReceiver( UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.RemoveLateUpdateReceiver( UpdateCallback receiver, int order = 0 );
 ```
