@@ -32,17 +32,29 @@ void OnDestroy() {
 - To receive a callback before/after all the Update, LateUpdate and/or FixedUpdate calls, use one of the following functions with a custom order:
 
 ```csharp
-OrderedUpdate.AddUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order )
-OrderedUpdate.AddFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order )
-OrderedUpdate.AddLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order )
-
-OrderedUpdate.RemoveUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order )
-OrderedUpdate.RemoveFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order )
-OrderedUpdate.RemoveLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order )
+OrderedUpdate.AddUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order );
+OrderedUpdate.AddFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order );
+OrderedUpdate.AddLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order );
 ```
 
 - To call an A function (located in any of your scripts) before a B function (again, located in any of your scripts) every frame, just make sure that function A's order is smaller than function B's order while calling *AddUpdateReceiver/AddFixedUpdateReceiver/AddLateUpdateReceiver*.
 
 - An Update callback registered to OrderedUpdate continues to execute even if the container object becomes inactive later in the game. If you don't want to call the function if the object is inactive, simply register your function to OrderedUpdate in **OnEnable** and unregister it in **OnDisable**.
 
-Have fun!
+## Method Signatures
+```csharp
+public delegate void UpdateCallback();
+
+public static event UpdateCallback OnPreUpdate;
+public static event UpdateCallback OnUpdate;
+public static event UpdateCallback OnFixedUpdate;
+public static event UpdateCallback OnLateUpdate;
+
+public static void OrderedUpdate.AddUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.AddFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.AddLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+
+public static void OrderedUpdate.RemoveUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.RemoveFixedUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+public static void OrderedUpdate.RemoveLateUpdateReceiver( OrderedUpdate.UpdateCallback receiver, int order = 0 );
+```
